@@ -6,7 +6,8 @@ class User
 	class << self
 		def get(since)
 			uri = "https://api.github.com/users?since=#{since}"
-			JSON.parse(get_response(uri))		
+			users = JSON.parse(get_response(uri))
+			users.collect { |user| user["_id"] = user["id"]; user }
 		end
 
 		def get_response(uri)
