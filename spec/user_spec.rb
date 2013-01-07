@@ -1,11 +1,11 @@
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
 describe User do
 	let(:dummy_since) { 0 }
 
 	before(:each) do
 		User.stub(:get_response) do |since|
-			open(File.dirname(__FILE__) + "/users.json").read
+			open(fixture("users.json")).read
 		end
 		@users = User.get(:dummy_since)
 		@user = @users[0]

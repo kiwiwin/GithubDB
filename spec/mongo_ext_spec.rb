@@ -1,8 +1,8 @@
-require_relative '../spec_helper'
+require_relative 'spec_helper'
 
 describe Mongo::DB do
 	before(:each) do
-		@db = Mongo::DB.open_db(File.dirname(__FILE__) + "/mongo_test.yml")
+		@db = Mongo::DB.open_db(fixture("mongo_test.yml"))
 		@client = @db.connection
 	end
 
